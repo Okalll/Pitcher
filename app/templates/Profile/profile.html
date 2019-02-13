@@ -11,13 +11,11 @@
   {%block content%}
   <div class="container">
     <div class="row">
-      <!-- displaying  Username-->
       <div class="wells">
         <div class="col-md-4">
           <h2> {{user.username| capitalize}} </h2>
           <br>
 
-          <!--Displaying user bio-->
           {% if user.bio %}
           <p> {{user.bio}}</p>
           {%else%}
@@ -25,7 +23,6 @@
           {% endif %}
         </div>
 
-        <!--Display profile photo-->
 
         <div class="col-md-4" style='float:right;'>
           {% if user.profile_pic_path %}
