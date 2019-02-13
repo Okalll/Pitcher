@@ -6,16 +6,16 @@
       <ul class='nav navbar-nav'>
         {% if current_user.is_authenticated %}
         <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
-        <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+        <li><a href="{{url_for('auth.logout')}}">Log out</a></li>
         {% else %}
-        <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+        <li><a href="{{url_for('auth.login')}}">Log in</a></li>
         {%endif%}
         <li><a href="{{url_for('auth.register')}}">Sign up</a></li>
         <li><a href="/">Home</a></li>
         <li><a href="/pickuplines">Pickup lines</a></li>
         <li><a href="/interview">Interview Pitch</a></li>
-        <li><a href="product">Product</a></li>
-        <li><a href="promotion">Promotion</a></li>
+        <li><a href="school">School Pitch</a></li>
+        <li><a href="promotion">Promotion Pitch</a></li>
       </ul>
 
     </div>

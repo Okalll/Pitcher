@@ -4,16 +4,10 @@ class Config:
     '''
     General configuration parent class
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:sarahjt12@localhost/pitches'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:1234@localhost/pitcher'
     SQLALCHEMY_TRACk_NOTIFICATIONS = False
-    SECRET_KEY='Cake124'
+    SECRET_KEY='1234'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
-    #  email configurations
-    # MAIL_SERVER = 'sjtoek.googlemail.com'
-    # MAIL_PORT = 587
-    # MAIL_USE_TLS = True
-    # MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
-    # MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
 
     pass
 
