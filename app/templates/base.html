@@ -1,0 +1,21 @@
+{%extends 'bootstrap/base.html'%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% if title %}
+    <title>{{title}}</title>
+    {% else%}
+    <title>'Welcome to the best picthcing site'</title>
+    {%endif%}
+  </head>
+  <body>
+    {% block content%}
+    {%block navbar %}
+      {%include 'navbar.html'%}
+    {%endblock%}
+    {%endblock%}
+
+
+  </body>
+</html>
