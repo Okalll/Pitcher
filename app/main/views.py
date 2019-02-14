@@ -83,25 +83,27 @@ def pickuplines():
     # pitch = Pitch.query.filter_by.first()
     pickuppitch = Pitch.query.filter_by(category="pickuppitch")
 
-    return render_template('pickuplines.html')
+    return render_template('pickuplines.html',pickuppitch=pickuppitch)
 
 
 @main.route('/school/pitches/', methods=['GET', 'POST'])
 def school():
-    pitches = Pitch.get_pitches('school')
 
-    return render_template('school.html', pitches=pitches)
+    schoolpitch = Pitch.query.filter_by(category="schoolpitch")
+
+    return render_template('school.html', schoolpitch=schoolpitch)
 
 
 @main.route('/interview/pitches/', methods=['GET', 'POST'])
 def interview():
-    pitches = Pitch.get_pitches('interview')
 
-    return render_template('interview.html', pitches=pitches)
+    interviewpitch = Pitch.query.filter_by(category="interviewpitch")
+
+    return render_template('interview.html', interviewpitch=interviewpitch)
 
 
 @main.route('/promotion/pitches/', methods=['GET', 'POST'])
 def promotion():
-    pitches = Pitch.get_pitches('promotion')
+    promotionpitch = Pitch.query.filter_by(category="promotionpitch")
 
-    return render_template('promotion.html', pitches=pitches)
+    return render_template('promotion.html', promotionpitch=promotionpitch)
