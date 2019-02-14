@@ -58,22 +58,21 @@ def update_pic(name):
 
 @main.route('/pickuplines', methods=['GET', 'POST'])
 def pickuplines():
-    pitch = Pitch.query.filter_by().first()
+    pitch = Pitch
     pickuppitch = Pitch.query.filter_by(category="pickuppitch")
-    return render_template('pickuplines.html', pitch=pitch, pickuppitch=pickuppitch)
+    return render_template('pickuplines.html', pitch=pitch)
 
 
 @main.route('/school', methods=['GET', 'POST'])
 def school():
-    pitch = Pitch.query.filter_by().first()
-    schoolpitch = Pitch.query.filter_by(category="schoolpitch")
+    pitches = Pitch.get_pitches('school')
 
-    return render_template('school.html', schoolpitch=schoolpitch, pitch=pitch)
+    return render_template('school.html', pitches=pitches)
 
 
 @main.route('/interview', methods=['GET', 'POST'])
 def interview():
-    pitch = Pitch.query.filter_by().first()
+    pitch = Pitch
     interviewpitch = Pitch.query.filter_by(category="interviewpitch")
 
     return render_template('interview.html', pitch=pitch, interviewpitch=interviewpitch)
@@ -81,7 +80,7 @@ def interview():
 
 @main.route('/promotion', methods=['GET', 'POST'])
 def promotion():
-    pitch = Pitch.query.filter_by().first()
+    pitch = Pitch
     promotionpitch = Pitch.query.filter_by(category="promotionpitch")
 
     return render_template('promotion.html', pitch=pitch, promotionpitch=promotionpitch)
