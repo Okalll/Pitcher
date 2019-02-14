@@ -63,12 +63,12 @@ def pickuplines():
     return render_template('pickuplines.html', pitch=pitch, pickuppitch=pickuppitch)
 
 
-@main.route('/product', methods=['GET', 'POST'])
-def product():
+@main.route('/school', methods=['GET', 'POST'])
+def school():
     pitch = Pitch.query.filter_by().first()
-    productpitch = Pitch.query.filter_by(category="productpitch")
+    schoolpitch = Pitch.query.filter_by(category="schoolpitch")
 
-    return render_template('product.html', productpitch=productpitch, pitch=pitch)
+    return render_template('school.html', schoolpitch=schoolpitch, pitch=pitch)
 
 
 @main.route('/interview', methods=['GET', 'POST'])

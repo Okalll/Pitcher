@@ -12,10 +12,10 @@
         {%endif%}
         <li><a href="{{url_for('auth.register')}}">Sign up</a></li>
         <li><a href="/">Home</a></li>
-        <li><a href="/pickuplines">Pickup lines</a></li>
-        <li><a href="/interview">Interview Pitch</a></li>
-        <li><a href="school">School Pitch</a></li>
-        <li><a href="promotion">Promotion Pitch</a></li>
+        <li><a href="{{url_for('main.pickuplines')}}">Pickup lines</a></li>
+        <li><a href="{{url_for('main.interview')}}">Interview Pitch</a></li>
+        <li><a href="{{url_for('main.school')}}">School Pitch</a></li>
+        <li><a href="{{url_for('main.promotion')}}">Promotion Pitch</a></li>
       </ul>
 
     </div>
