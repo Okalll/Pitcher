@@ -1,81 +1,40 @@
-from flask import render_template,redirect,url_for,abort,request
+from flask import render_template
+from .forms import PitchForm
+from ..models import Pitch
 from . import main
-from flask_login import login_required
-from ..models import User,Pickuplines,Promotion,Product,Interview,Pitch
-from .forms import UpdateProfile
-from .. import db,photos
 
 # Views
 @main.route('/')
-def home():
+def index():
 
     '''
-    View root page function that returns the home page and its data
+    View root page function that returns the index page and its data
     '''
-    return render_template('home.html')
 
-@main.route('/user/<uname>')
-def profile(uname):
-    user = User.query.filter_by(username = uname).first()
+    title = 'Home - Welcome to To The Pitch Clinic'
+    return render_template('index.html', title = title)
 
-    if user is None:
-        abort(404)
-
-    return render_template("Profile/profile.html", user = user)
-
-@main.route('/user/<uname>/update',methods = ['GET','POST'])
-@login_required
-def update_profile(uname):
-    user = User.query.filter_by(username = uname).first()
-    if user is None:
-        abort(404)
-
-    form = UpdateProfile()
+@main.route('/pitch/new', methods = ['GET','POST'])
+def new_pitch():
+    form = pitchForm()
 
     if form.validate_on_submit():
-        user.bio = form.bio.data
+        title = form.title.data
+        pitch = form.pitch.data
+        new_pitch = pitch(title,pitch)
+        new_pitch.save_pitch()
+        return redirect(url_for('pitch.html'))
 
-        db.session.add(user)
-        db.session.commit()
+    title = f'{movie.title} pitch'
+    return render_template('pitch.html',title = title, pitch_form=form)
 
-        return redirect(url_for('.profile',uname=user.username))
+@main.route('/pitch')
+def pitch(title):
 
-    return render_template('Profile/update.html',form =form)
+    '''
+    View movie page function that returns the pitch details page and its data
+    '''
+    title = f'{pitch.title}'
+    pitches = Pitch.get_pitches(pitch.title)
 
-@main.route('/user/<uname>/update/pic',methods= ['POST'])
-@login_required
-def update_pic(uname):
-    user = User.query.filter_by(username = uname).first()
-    if 'photo' in request.files:
-        filename = photos.save(request.files['photo'])
-        path = f'photos/{filename}'
-        user.profile_pic_path = path
-        db.session.commit()
-    return redirect(url_for('main.profile',uname=uname))
-
-@main.route('/pickuplines', methods=['GET', 'POST'])
-def pickuplines():
-    pitch = Pitch.query.filter_by().first()
-    pickuppitch = Pitch.query.filter_by(category="pickuppitch")
-    return render_template('pickuplines.html', pitch=pitch, pickuppitch=pickuppitch)
-
-@main.route('/product', methods=['GET', 'POST'])
-def product():
-    pitch = Pitch.query.filter_by().first()
-    productpitch= Pitch.query.filter_by(category="productpitch")
-
-    return render_template('product.html', productpitch=productpitch, pitch=pitch)
-
-@main.route('/interview', methods=['GET', 'POST'])
-def interview():
-    pitch = Pitch.query.filter_by().first()
-    interviewpitch = Pitch.query.filter_by(category="interviewpitch")
-
-    return render_template('interview.html', pitch=pitch, interviewpitch=interviewpitch)
-
-@main.route('/promotion', methods=['GET', 'POST'])
-def promotion():
-    pitch = Pitch.query.filter_by().first()
-    promotionpitch = Pitch.query.filter_by(category="promotionpitch")
-
-    return render_template('promotion.html', pitch=pitch, promotionpitch=promotionpitch)
+    return render_template('index.html',title = title,pitches = pitches)
