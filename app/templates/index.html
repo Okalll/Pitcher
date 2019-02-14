@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  {%if title%}
+  <title>{{title}}</title>
+  {%else%}
+  <title>PITCH CLINIC</title>
+  {% endif %}
+  {% block styles%}
+  {{ super() }}
+  <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+  {% endblock %}
+</head>
+
+<body>
+  {%block content%}
+  <h1 align="center" style='color:black'>{{word}} Pitch</h1>
+  <h3 align="center">PITCH CLINIC</h3>
+  <br>
+  <div class="container_fluid">
+    
+    </div>
+
+
+  </div>
+
+  {%endblock%}
+</body>
+
+</html>

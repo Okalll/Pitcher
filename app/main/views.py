@@ -1,22 +1,20 @@
 from flask import render_template, redirect, url_for, abort, request
-from . import main
 from flask_login import login_required
 from ..models import User, Pickuplines, Promotion, Product, Interview, Pitch
 from .forms import UpdateProfile
-from .. import db, photos
-
-# Views
+from .. import db
+from . import main
 
 
 @main.route('/')
-def home():
+def index():
     '''
     View root page function that returns the home page and its data
     '''
-    return render_template('home.html')
+    return render_template('index.html')
 
 
-@main.route('/user/<>')
+@main.route('/user/<name>')
 def profile(name):
     user = User.query.filter_by(username=name).first()
 
