@@ -4,6 +4,7 @@ from ..models import User, Pickuplines, Promotion, Product, Interview, Pitch
 from .forms import UpdateProfile
 from .. import db
 from . import main
+from .forms import PitchForm
 
 
 @main.route('/')
@@ -56,31 +57,29 @@ def update_pic(name):
     return redirect(url_for('main.profile', name=name))
 
 
-@main.route('/pickuplines', methods=['GET', 'POST'])
+@main.route('/pickuplines/pitches', methods=['GET', 'POST'])
 def pickuplines():
-    pitch = Pitch
-    pickuppitch = Pitch.query.filter_by(category="pickuppitch")
-    return render_template('pickuplines.html', pitch=pitch)
+    pitches = Pitch.get_pitches('pickuplines')
+
+    return render_template('pickuplines.html', pitches=pitches)
 
 
-@main.route('/school', methods=['GET', 'POST'])
+@main.route('/school/pitches/', methods=['GET', 'POST'])
 def school():
     pitches = Pitch.get_pitches('school')
 
     return render_template('school.html', pitches=pitches)
 
 
-@main.route('/interview', methods=['GET', 'POST'])
+@main.route('/interview/pitches/', methods=['GET', 'POST'])
 def interview():
-    pitch = Pitch
-    interviewpitch = Pitch.query.filter_by(category="interviewpitch")
+    pitches = Pitch.get_pitches('interview')
 
-    return render_template('interview.html', pitch=pitch, interviewpitch=interviewpitch)
+    return render_template('interview.html', pitches=pitches)
 
 
-@main.route('/promotion', methods=['GET', 'POST'])
+@main.route('/promotion/pitches/', methods=['GET', 'POST'])
 def promotion():
-    pitch = Pitch
-    promotionpitch = Pitch.query.filter_by(category="promotionpitch")
+    pitches = Pitch.get_pitches('promotion')
 
-    return render_template('promotion.html', pitch=pitch, promotionpitch=promotionpitch)
+    return render_template('promotion.html', pitches=pitches)

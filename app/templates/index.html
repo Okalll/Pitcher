@@ -1,9 +1,5 @@
 {%extends 'base.html'%}
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
-  <meta charset="utf-8">
+{% import 'bootstrap/wtf.html' as wtf %}
   {%if title%}
   <title>{{title}}</title>
   {%else%}
@@ -13,21 +9,24 @@
   {{ super() }}
   <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
   {% endblock %}
-</head>
+  <h1 align="center" style='color:black'><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2TZEC_t6tUbMU9wb8lcjy5SYhVUlrBjGQqWQDAlk6iCf-53TO"></h1>
 
-<body>
-  {%block content%}
-  <h1 align="center" style='color:black'>{{word}} Pitch</h1>
-  <h3 align="center">PITCH CLINIC</h3>
-  <br>
-  <div class="container_fluid">
-    
+{% block content%}
+    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+      <div class="panel style="style="border: 3px solid #f2f2f2; padding:20px; margin-top:10px;">
+        <p style="font-family: 'Felipa', cursive; font-size:20px;">Write your a pitch </p>
+
+        <div style="text-align:center;">
+          <a href="{{url_for('main.new_pitch')}}">
+            <br>
+            <span >Add a new Pitch</span>
+          </a>
+        </div>
+      </div>
     </div>
 
 
-  </div>
-
-  {%endblock%}
+{% endblock %}
 </body>
 
 </html>
