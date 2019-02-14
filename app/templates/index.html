@@ -8,13 +8,14 @@
   {% block styles%}
   {{ super() }}
   <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+  <background-image: url({{ url_for('static', filename='css/pitch.png') }})>
   {% endblock %}
+  {% block content%}
   <h1 align="center" style='color:black'><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2TZEC_t6tUbMU9wb8lcjy5SYhVUlrBjGQqWQDAlk6iCf-53TO"></h1>
-
-{% block content%}
-    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+  
+    <div align="centre" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
       <div class="panel style="style="border: 3px solid #f2f2f2; padding:20px; margin-top:10px;">
-        <p style="font-family: 'Felipa', cursive; font-size:20px;">Write your a pitch </p>
+        <p style="font-family: 'Felipa', cursive; font-size:20px;">PITCH IT!</p>
 
         <div style="text-align:center;">
           <a href="{{url_for('main.new_pitch')}}">
@@ -27,6 +28,3 @@
 
 
 {% endblock %}
-</body>
-
-</html>

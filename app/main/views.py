@@ -1,10 +1,9 @@
 from flask import render_template, redirect, url_for, abort, request
 from flask_login import login_required
-from ..models import User, Pickuplines, Promotion, Product, Interview, Pitch
-from .forms import UpdateProfile
+from ..models import User, Pickuplines, Promotion, School, Interview, Pitch
+from .forms import UpdateProfile, PitchForm
 from .. import db
 from . import main
-from .forms import PitchForm
 
 
 @main.route('/')
@@ -57,11 +56,34 @@ def update_pic(name):
     return redirect(url_for('main.profile', name=name))
 
 
-@main.route('/pickuplines/pitches', methods=['GET', 'POST'])
-def pickuplines():
-    pitches = Pitch.get_pitches('pickuplines')
+@main.route('/pitch/new/', methods=['GET', 'POST'])
+@login_required
+def new_pitch():
+    '''
+    Function that creates new pitches
+    '''
+    form = PitchForm()
 
-    return render_template('pickuplines.html', pitches=pitches)
+    if category is None:
+        abort(404)
+
+    if form.validate_on_submit():
+        pitch = form.content.data
+        category_id = form.category_id.data
+        new_pitch = Pitch(pitch=pitch, category_id=category_id)
+
+        new_pitch.save_pitch()
+        return redirect(url_for('main.index'))
+
+    return render_template('new_pitch.html', new_pitch_form=form, category=category)
+
+
+@main.route('/pickuplines', methods=['GET', 'POST'])
+def pickuplines():
+    # pitch = Pitch.query.filter_by.first()
+    pickuppitch = Pitch.query.filter_by(category="pickuppitch")
+
+    return render_template('pickuplines.html')
 
 
 @main.route('/school/pitches/', methods=['GET', 'POST'])

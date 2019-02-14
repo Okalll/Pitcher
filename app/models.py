@@ -18,6 +18,7 @@ class User(UserMixin, db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     pass_secure = db.Column(db.String(255))
+
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
@@ -80,11 +81,11 @@ class Promotion:
         self.author = author
 
 
-class Product:
-    product = []
+class School:
+    school = []
 
-    def __init__(self, products, author):
-        self.products = products
+    def __init__(self, school, author):
+        self.school = school
         self.author = author
 
 
@@ -95,7 +96,7 @@ class Interview:
         self.interviews = interviews
         self.author = author
 
-
+                    
 class Pitch(db.Model):
     __tablename__ = 'pitches'
 
@@ -103,12 +104,11 @@ class Pitch(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     description = db.Column(db.String(), index=True)
     category = db.Column(db.String(255), nullable=False)
-    comments = db.relationship('Comment', backref='pitch', lazy='dynamic')
 
     @classmethod
-    def get_pitches(cls, id):
-        pitches = Pitch.query.order_by(pitch_id=id).desc().all()
-        return pitches
+    def get_pitch(cls, id):
+        pitch = Pitch.query.order_by(pitch.id).desc().all()
+        return pitch
 
     def __repr__(self):
         # return f'Pitch {self.description}'
@@ -126,4 +126,3 @@ class Pitch(db.Model):
 
 #     def __repr__(self):
 #         return f"Comment : id: {self.id} comment: {self.description}"
-        
