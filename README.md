@@ -48,5 +48,22 @@ Install dependancies that will create an environment for the app to run
 
 * A user is able to post a profile picture and write a bio  and also post a pich on any category
 
-### Behaviour Driven Development 
+### Running the app in development
+
+In the same terminal type:
+
+`python3 manage.py server`
+
+Open the browser on `http://localhost:5000/`
+
+## Technologies used
+
+    - Python 3.6
+    - HTML
+    - Bootstrap 4
+    - JavaScript
+    - Heroku
+    - Postgresql
+
+
 
