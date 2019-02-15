@@ -64,13 +64,13 @@ def new_pitch():
     '''
     form = PitchForm()
 
-    if category is None:
-        abort(404)
+    #if category is None:
+        #abort(404)
 
     if form.validate_on_submit():
         pitch = form.content.data
-        category_id = form.category_id.data
-        new_pitch = Pitch(pitch=pitch, category_id=category_id)
+        category = form.category.data
+        new_pitch = Pitch(pitch=pitch, category=category)
 
         new_pitch.save_pitch()
         return redirect(url_for('main.index'))
