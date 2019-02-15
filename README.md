@@ -44,5 +44,9 @@ Install dependancies that will create an environment for the app to run
 
 * A user could also register.
 
+* A user is able to update his/her profile page 
+
+* A user is able to post a profile picture and write a bio  and also post a pich on any category
+
 ### Behaviour Driven Development 
 
