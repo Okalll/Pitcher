@@ -16,6 +16,15 @@ This application enables a user to  write a pitch depending on the category of c
     - Python 3.6
     - Ubuntu software
 
+
+To start using this project use the following commands:
+
+git clone https://github.com/Okalll/Pitcher.git
+cd Pitch
+atom .
+code . (this is if Visual Studio Code is your preferred text editor)
+
+
 ### Create a Virtual Environment
 
 Run the following commands in the same terminal:
