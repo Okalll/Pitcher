@@ -29,3 +29,20 @@ Run the following commands in the same terminal:
 ### Install dependancies
 
 Install dependancies that will create an environment for the app to run
+
+
+```pip3 install -r requirements.txt```
+
+### User stories
+* A user would view the pitches created in the profile page.
+
+* A user would submit a pitch in any category.
+
+* A user would  view the different categories.
+
+* A user is able to login and log out.
+
+* A user could also register.
+
+### Behaviour Driven Development 
+
